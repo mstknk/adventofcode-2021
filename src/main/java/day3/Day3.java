@@ -54,22 +54,24 @@ public class Day3 {
 				if (finalMapDescendingOrder.size() == 1) {
 					break;
 				}
-				String n;
-				if (finalMapDescendingOrder.get("0") == finalMapDescendingOrder.get("1")) {
-					n = oxygenGenerator == OXYGEN_GENERATOR ? "1" : "0";
-				} else {
-					if (oxygenGenerator == OXYGEN_GENERATOR) {
-						n = finalMapDescendingOrder.get("0") > finalMapDescendingOrder.get("1") ? "0" : "1";
-					} else {
-						n = finalMapDescendingOrder.get("0") > finalMapDescendingOrder.get("1") ? "1" : "0";
-					}
-
-				}
+				String n = getNumber(oxygenGenerator, finalMapDescendingOrder);
 				list = getNewList(n, finalMapDescendingOrder.get(n), list, a);
 
 			}
 		}
 		return list.get(0);
+	}
+
+	private static String getNumber(RatingType oxygenGenerator, Map<String, Long> finalMapDescendingOrder) {
+		if (finalMapDescendingOrder.get("0").equals(finalMapDescendingOrder.get("1"))) {
+			return oxygenGenerator == OXYGEN_GENERATOR ? "1" : "0";
+		}
+		if (oxygenGenerator == OXYGEN_GENERATOR) {
+			return finalMapDescendingOrder.get("0") > finalMapDescendingOrder.get("1") ? "0" : "1";
+		} else {
+			return finalMapDescendingOrder.get("0") > finalMapDescendingOrder.get("1") ? "1" : "0";
+		}
+
 	}
 
 	private static List<String> getNewList(String n, Long number, List<String> list, int position) {
