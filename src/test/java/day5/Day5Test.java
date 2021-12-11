@@ -18,10 +18,6 @@ public class Day5Test {
             "3,4 -> 1,4",
             "0,0 -> 8,8",
             "5,5 -> 8,2");
-    List<String> list2 = List.of(
-            "6,4 -> 2,0",
-            "9,7 -> 7,9"
-            );
 
     @Test
     void assertThatPart1() {

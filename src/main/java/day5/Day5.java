@@ -49,25 +49,23 @@ public class Day5 {
                     String mark = getMark(matrix[y1][i]);
                     matrix[y1][i] = mark;
                 }
-            } else if (x1 < x2 && y1 < y2) {
+            } else if (x1 < x2 && y1 < y2 && diagonal) {
                 for (int i = 0; i <= y2-y1; i++) {
                     String mark = getMark(matrix[y1+i][x1+i]);
                     matrix[y1+i][x1+i] = mark;
-                   // System.out.println((y1+i) + " " +(x1+i) );
                 }
-            } else if (x1 > x2 && y1 > y2) {
+            } else if (x1 > x2 && y1 > y2 && diagonal) {
                for (int i = 0; i <= y1-y2; i++) {
                  String mark = getMark(matrix[y1-i][x1-i]);
                    matrix[y1-i][x1-i] = mark;
-                  // System.out.println((x1-i) + " " + (y1-i));
                  }
-            } else if (x1 > x2 && y1 < y2) {
+            } else if (x1 > x2 && y1 < y2 && diagonal) {
                 for (int i = 0; i <= y2-y1; i++) {
 
                     String mark = getMark(matrix[y1 + i][x1-i]);
                     matrix[y1 + i][x1-i] = mark;
                 }
-            } else if (x1 < x2 && y1 > y2) {
+            } else if (x1 < x2 && y1 > y2 && diagonal) {
                 for (int i = 0; i <= x2 - x1; i++) {
                     String mark = getMark(matrix[y1-i][i + x1]);
                     matrix[y1 - i][i+x1] = mark;
