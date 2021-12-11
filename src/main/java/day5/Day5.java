@@ -49,47 +49,32 @@ public class Day5 {
                     String mark = getMark(matrix[y1][i]);
                     matrix[y1][i] = mark;
                 }
-            } else if (diagonal) {
-                if (x1 == y1 && x2 == y2) {
-                    matrix[x1][y1] = getMark(matrix[x1][y1]);
-                    matrix[x2][y2] = getMark(matrix[x2][y2]);
-                    for (int i = Math.min(y1, y2) + 1; i < Math.max(y1, y2); i++) {
-                        String mark = getMark(matrix[i][i]);
-                        matrix[i][i] = mark;
-                    }
+            } else if (x1 < x2 && y1 < y2) {
+                for (int i = 0; i <= y2-y1; i++) {
+                    String mark = getMark(matrix[y1+i][x1+i]);
+                    matrix[y1+i][x1+i] = mark;
+                   // System.out.println((y1+i) + " " +(x1+i) );
+                }
+            } else if (x1 > x2 && y1 > y2) {
+               for (int i = 0; i <= y1-y2; i++) {
+                 String mark = getMark(matrix[y1-i][x1-i]);
+                   matrix[y1-i][x1-i] = mark;
+                  // System.out.println((x1-i) + " " + (y1-i));
+                 }
+            } else if (x1 > x2 && y1 < y2) {
+                for (int i = 0; i <= y2-y1; i++) {
 
-                } else if ((x1 == y2 && x2 == y1)) {
-                    int y = Math.max(y1, y2);
-                    for (int i = Math.min(x1, x2); i < Math.max(y1, y2) + 1; i++) {
-                        String mark = getMark(matrix[i][y]);
-                        matrix[i][y] = mark;
-                        y--;
-                    }
-                } else {
-
-                    if (x1 > x2) {
-                        int x = Math.max(x1, x2);
-
-                        for (int i = Math.max(y1, y2); i > Math.min(y1, y2) - 1; i--) {
-                            String mark = getMark(matrix[i][x]);
-                            matrix[i][x] = mark;
-                            x--;
-                        }
-
-                    }
-                    if (x1 < x2) {
-                        int x = Math.max(x1, x2);
-
-                        for (int i = Math.min(y1, y2); i < Math.max(y1, y2) + 1; i++) {
-                            String mark = getMark(matrix[i][x]);
-                            matrix[i][x] = mark;
-                            x--;
-                        }
-                    }
+                    String mark = getMark(matrix[y1 + i][x1-i]);
+                    matrix[y1 + i][x1-i] = mark;
+                }
+            } else if (x1 < x2 && y1 > y2) {
+                for (int i = 0; i <= x2 - x1; i++) {
+                    String mark = getMark(matrix[y1-i][i + x1]);
+                    matrix[y1 - i][i+x1] = mark;
                 }
             }
         }
-       //printm(matrix);
+       // printm(matrix);
         return count(matrix, max);
     }
 
