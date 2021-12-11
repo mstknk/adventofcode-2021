@@ -18,12 +18,23 @@ public class Day5Test {
             "3,4 -> 1,4",
             "0,0 -> 8,8",
             "5,5 -> 8,2");
+    List<String> list2 = List.of(
+            "6,4 -> 2,0",
+            "9,7 -> 7,9"
+            );
 
     @Test
     void assertThatPart1() {
 
-        int finalScore = Day5.calculate(list);
+        int finalScore = Day5.calculate(list,false);
         assertEquals(5, finalScore);
+    }
+
+    @Test
+    void assertThatPart2() {
+
+        int finalScore = Day5.calculate(list,true);
+        assertEquals(12, finalScore);
     }
 }
 
